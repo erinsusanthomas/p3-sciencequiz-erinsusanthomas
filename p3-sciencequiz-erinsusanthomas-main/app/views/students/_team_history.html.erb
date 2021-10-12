@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-content">
+    <% if @student.teams.empty? %>
+      <p>No team history</p>
+    <% else %>
+    <span class="card-title">Team History </span>
+      <table class="striped highlight">
+        <thead>
+          <th>Team</th>
+          <th>Starting</th>
+          <th>Ending</th>
+        </thead>
+        <% for st in @student.student_teams %>
+          <tr>
+            <td><%= link_to st.team.name, team_path(st.team) %></td>
+            <td><%= st.start_date.strftime("%m/%d/%y") %></td>
+            <td><%= st.end_date.nil? ? '--' : st.end_date.strftime("%m/%d/%y")   %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+    <br/><%= link_to 'Add to a new team', new_student_team_path(student_id: @student.id) %>
+  </div>
+</div>

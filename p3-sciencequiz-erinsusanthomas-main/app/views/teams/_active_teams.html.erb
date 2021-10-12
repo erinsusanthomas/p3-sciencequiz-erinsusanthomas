@@ -1,0 +1,62 @@
+<% if @active_senior_teams.empty? %>
+  <h4>No active senior teams at this time</h4>
+<% else %>
+<h4><b>Active Senior Teams in ScienceQuiz<b></h4>
+
+<table class="highlight">
+  <thead>
+  <th>Team</th>
+  <th>Organization</th>
+  <th>Members</th>
+  <th class="align_center">Edit</th>
+  </thead>
+  <% for team in @active_senior_teams %>
+        <trclass="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to team.name, team_path(team) %></td>
+            <td><%= link_to team.organization.name, organization_path(team.organization) %></td>
+            <td><%= team.student_teams.current.size %></td>
+            <td class="align_center">
+            <%= link_to edit_team_path(team) do %>
+                <i class="material-icons">edit</i>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+</table>
+<p class="supertiny"></p>
+<br />
+<% end %>
+<br/<br/>
+
+<% if @active_junior_teams.empty? %>
+  <h4>No active junior teams at this time</h4>
+<% else %>
+<h4><b>Active Junior Teams in ScienceQuiz<b></h4>
+
+<table class="highlight">
+  <thead>
+  <th>Team</th>
+  <th>Organization</th>
+  <th>Members</th>
+  <th class="align_center">Edit</th>
+  </thead>
+  <% for team in @active_junior_teams %>
+        <trclass="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to team.name, team_path(team) %></td>
+            <td><%= link_to team.organization.name, organization_path(team.organization)  %></td>
+            <td><%= team.student_teams.current.size %></td>
+            <td class="align_center">
+            <%= link_to edit_team_path(team) do %>
+                <i class="material-icons">edit</i>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+</table>
+
+
+<p class="supertiny"></p>
+<br />
+<% end %>
+<p>&nbsp;</p>
+<%= render :partial => "partials/operations_partials/add_new_object", locals: {model_name: 'team'} %>

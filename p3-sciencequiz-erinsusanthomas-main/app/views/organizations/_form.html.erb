@@ -1,0 +1,22 @@
+<%= simple_form_for(@organization) do |f| %>
+    <%= f.error_notification %>
+    <div class="row">
+      <div class="form-inputs">
+        <%= f.input :name, label_html: { class: 'active' } %>
+        <%= f.input :street_1, label_html: { class: 'active' } %>
+        <%= f.input :street_2, label_html: { class: 'active' } %>
+        <%= f.input :city, label_html: { class: 'active' } %>
+        <%# f.input :state, label_html: { class: 'active' } %>
+        <%= f.input :state, collection: Organization::STATES_LIST, include_blank: true %>
+        <%= f.input :zip, label_html: { class: 'active' } %>
+        <%= f.input :short_name, label_html: { class: 'active' } %>
+        <%= f.input :active %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-actions col s8">
+        <%= f.button :submit %>
+      </div>
+    </div>
+  <% end %>
+  

@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-content">
+    <% if @current_student_assignments.empty? %>
+      <p>No current students</p>
+    <% else %>
+    <span class="card-title">Current Students </span>
+      <table class="striped highlight">
+        <thead>
+          <th>Name</th>
+          <th>Position</th>
+        </thead>
+        <% for st in @current_student_assignments %>
+          <tr>
+            <td><%= link_to st.student.proper_name, student_path(st.student) %></td>
+            <td><%= st.position %></td>
+          </tr>
+        <% end %>
+      </table>
+    <% end %>
+    <br/><%= link_to 'Add a new student', new_student_team_path(team_id: @team.id) %>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="card-content">
+    <h5><%= @student.proper_name %></h5><br />
+
+    <b>Organization:&nbsp;&nbsp;</b> 
+    <%= link_to @student.organization.name, organization_path(@student.organization) %><br><br />
+
+    <b>Current Team:&nbsp;&nbsp;</b> 
+    <%= if @current_team.nil? 
+            'N/A' 
+        else 
+            link_to @current_team.name, team_path(@current_team) 
+        end %><br /><br />
+
+    <b>Grade:&nbsp;&nbsp;</b> <%= @student.grade %><br><br />
+
+    <b>Active?&nbsp;&nbsp;</b> <%= @student.active ? "Yes" : "No" %><br><br />
+
+  </div>
+</div>

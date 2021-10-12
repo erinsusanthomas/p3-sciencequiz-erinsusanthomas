@@ -1,0 +1,29 @@
+<% if @active_organizations.empty? %>
+  <h4>No active organizations at this time</h4>
+<% else %>
+<h4><b>Active Organizations</b></h4>
+
+<table class="highlight">
+  <thead>
+  <th>Name</th>
+  <th>State</th>
+  <th class="align_center">Edit</th>
+  </thead>
+  <% for organization in @active_organizations %>
+        <trclass="<%= cycle('dg_list_line_odd', 'dg_list_line_even') %>">
+            <td><%= link_to organization.name, organization_path(organization) %></td>
+            <td><%= organization.state %></td>
+            <td class="align_center">
+            <%= link_to edit_organization_path(organization) do %>
+                <i class="material-icons">edit</i>
+            <% end %>
+            </td>
+        </tr>
+        <% end %>
+</table>
+<p class="supertiny"></p>
+<br />
+<%= will_paginate @active_organizations, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>
+<% end %>
+<p>&nbsp;</p>
+<%= render :partial => "partials/operations_partials/add_new_object", locals: {model_name: 'organization'} %>

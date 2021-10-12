@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-content">
+    <h5><%= @organization.name %></h5><br />
+
+    <b>Short Name:&nbsp;&nbsp;</b>
+        <%= @organization.short_name %><br><br />
+
+    <b>Address:&nbsp;&nbsp;</b><br>
+      <%= @organization.street_1 %>, <%= @organization.street_2 %><br>
+      <%= @organization.city %>, <%= @organization.state %> <%= @organization.zip %><br /><br />
+
+    <b>Active?&nbsp;&nbsp;</b>
+      <%= @organization.active ? "Yes" : "No" %><br><br />
+
+    <b>Joined ScienceQuiz in <%= @organization.created_at.year %><br>
+
+  </div>
+</div>

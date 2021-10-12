@@ -1,0 +1,17 @@
+<%= simple_form_for(@team) do |f| %>
+    <%= f.error_notification %>
+    <div class="row">
+      <div class="form-inputs">
+        <%= f.input :name, label_html: { class: 'active' } %>
+        <%= f.input :division, collection: Team::DIVISION_LIST %>
+        <%= f.input :organization_id, collection: Organization.alphabetical.active.to_a %> 
+        <%= f.input :active %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="form-actions col s8">
+        <%= f.button :submit %>
+      </div>
+    </div>
+  <% end %>
+  

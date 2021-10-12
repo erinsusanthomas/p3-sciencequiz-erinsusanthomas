@@ -1,0 +1,18 @@
+<br /><br /><br />
+<% unless @inactive_organizations.empty? %>
+
+<ul class="collapsible">
+<li>
+  <div class="collapsible-header"> <p> <b> Inactive Organizations </b> <p>
+  <i class="material-icons"> expand_more </i></div>
+  <div class="collapsible-body">
+  <ul>
+    <% for organization in @inactive_organizations %>
+      <li><%= link_to organization.name, organization_path(organization) %></li>
+    <% end %>
+  </ul>
+  </div>
+</li>
+</ul>
+
+<% end %>
